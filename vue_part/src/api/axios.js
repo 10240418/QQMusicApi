@@ -5,7 +5,7 @@ const request = axios.create({
     timeout: 1000000
 })
 // axios 请求拦截器
-request.interceptor.request.use(
+request.interceptors.request.use(
     (config)=>{
         return config;
     },
@@ -14,7 +14,7 @@ request.interceptor.request.use(
     }
 );
 // axios 响应拦截器
-request.interceptor.response.use(
+request.interceptors.response.use(
     (res)=>{
         return res.data;
     },

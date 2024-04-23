@@ -11,6 +11,8 @@ const Cache = require('./util/cache');
 const config = require('./bin/config');
 const Request = require('./util/request');
 const GlobalCookie = require('./util/globalCookie');
+const cors = require('cors');
+
 
 const app = express();
 const dataHandle = new DataStatistics();
@@ -31,6 +33,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(cors());
 
 config.useDataStatistics && app.use((req, res, next) => dataHandle.record(req, res, next));
 
